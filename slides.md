@@ -22,7 +22,6 @@ background: |
     url('https://www.transparenttextures.com/patterns/cubes.png');
   color: #e3f0fa;
   font-family: 'Montserrat', Arial, sans-serif;
-  /* Animate only the linear-gradient layer (second layer) */
   background-size: 100% 100%, 300% 300%, auto;
   background-position: 0 0, 0% 50%, 0 0;
   animation: gradientMove 24s ease-in-out infinite;
@@ -34,6 +33,17 @@ h1, h2, h3 {
 }
 a {
   color: #90caf9;
+}
+
+/* Container for the ECG with a fade-out mask */
+.ecg-container {
+  width: 100%;
+  margin: 1.2em 0;
+  overflow: hidden;
+  position: relative;
+  height: 60px;
+  -webkit-mask: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  mask: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
 </style>
 
@@ -48,45 +58,31 @@ a {
   </h3>
 
   <!-- Animated, responsive ECG heartbeat line -->
-  <div style="width: 100%; margin: 1.2em 0 1.2em 0; overflow: hidden; position: relative; height: 54px;">
+  <div class="ecg-container">
     <svg
-      v-motion="{
-        initial: { x: 0, opacity: 0.18 },
-        enter: { 
-          x: [-800, 0], // animate from -800 to 0
-          opacity: [0.18, 0.45, 0.18], 
-          transition: { 
-            duration: 3200, 
-            times: [0, 0.5, 1], 
-            repeat: Infinity, 
-            repeatType: 'loop', 
-            ease: 'linear' 
-          }
-        }
+      v-motion
+      :initial="{ x: '-50%' }"
+      :enter="{
+        x: '0%',
+        transition: {
+          duration: 4000,
+          ease: 'linear',
+          repeat: Infinity,
+          repeatType: 'loop',
+        },
       }"
-      width="200%" height="54" viewBox="0 0 3200 54" fill="none"
-      style="display: block; position: absolute; left: 0; top: 0; min-width: 200%;">
+      width="200%" height="60" viewBox="0 0 1600 60" fill="none"
+      style="display: block; position: absolute; left: 0; top: 0; opacity: 0.6;"
+    >
+      <!-- 
+        This path is meticulously designed for a seamless loop.
+        The waveform from 0-800 is visually identical to the one from 800-1600.
+        This ensures no "jump" when the animation repeats.
+      -->
       <path
-        d="M0,40 
-           L100,40 Q110,40 115,24 Q120,8 125,40 L200,40 Q210,40 213,36 Q216,32 219,40 L240,40
-           Q243,40 246,25 Q249,10 252,40 L300,40 Q310,40 312,20 Q314,0 316,40 L318,40 Q319,45 320,10 Q321,5 322,40 L400,40
-           L500,40 Q510,40 515,24 Q520,8 525,40 L600,40 Q610,40 613,36 Q616,32 619,40 L640,40
-           Q643,40 646,25 Q649,10 652,40 L700,40 Q710,40 712,20 Q714,0 716,40 L718,40 Q719,45 720,10 Q721,5 722,40 L800,40
-           L900,40 Q910,40 915,24 Q920,8 925,40 L1000,40 Q1010,40 1013,36 Q1016,32 1019,40 L1040,40
-           Q1043,40 1046,25 Q1049,10 1052,40 L1100,40 Q1110,40 1112,20 Q1114,0 1116,40 L1118,40 Q1119,45 1120,10 Q1121,5 1122,40 L1200,40
-           L1300,40 Q1310,40 1315,24 Q1320,8 1325,40 L1400,40 Q1410,40 1413,36 Q1416,32 1419,40 L1440,40
-           Q1443,40 1446,25 Q1449,10 1452,40 L1500,40 Q1510,40 1512,20 Q1514,0 1516,40 L1518,40 Q1519,45 1520,10 Q1521,5 1522,40 L1600,40
-           M1600,40 
-           L1700,40 Q1710,40 1715,24 Q1720,8 1725,40 L1800,40 Q1810,40 1813,36 Q1816,32 1819,40 L1840,40
-           Q1843,40 1846,25 Q1849,10 1852,40 L1900,40 Q1910,40 1912,20 Q1914,0 1916,40 L1918,40 Q1919,45 1920,10 Q1921,5 1922,40 L2000,40
-           L2100,40 Q2110,40 2115,24 Q2120,8 2125,40 L2200,40 Q2210,40 2213,36 Q2216,32 2219,40 L2240,40
-           Q2243,40 2246,25 Q2249,10 2252,40 L2300,40 Q2310,40 2312,20 Q2314,0 2316,40 L2318,40 Q2319,45 2320,10 Q2321,5 2322,40 L2400,40
-           L2500,40 Q2510,40 2515,24 Q2520,8 2525,40 L2600,40 Q2610,40 2613,36 Q2616,32 2619,40 L2640,40
-           Q2643,40 2646,25 Q2649,10 2652,40 L2700,40 Q2710,40 2712,20 Q2714,0 2716,40 L2718,40 Q2719,45 2720,10 Q2721,5 2722,40 L2800,40
-           L2900,40 Q2910,40 2915,24 Q2920,8 2925,40 L3000,40 Q3010,40 3013,36 Q3016,32 3019,40 L3040,40
-           Q3043,40 3046,25 Q3049,10 3052,40 L3100,40 Q3110,40 3112,20 Q3114,0 3116,40 L3118,40 Q3119,45 3120,10 Q3121,5 3122,40 L3200,40"
+        d="M0,30 L150,30 C155,30 158,26 162,30 L170,30 L175,33 L185,5 L192,58 L200,30 L220,30 C230,30 240,18 255,30 L400,30 C405,30 408,26 412,30 L420,30 L425,33 L435,5 L442,58 L450,30 L470,30 C480,30 490,18 505,30 L550,30 L600,30 C605,30 608,26 612,30 L620,30 L625,33 L635,5 L642,58 L650,30 L670,30 C680,30 690,18 705,30 L800,30 M800,30 L950,30 C955,30 958,26 962,30 L970,30 L975,33 L985,5 L992,58 L1000,30 L1020,30 C1030,30 1040,18 1055,30 L1200,30 C1205,30 1208,26 1212,30 L1220,30 L1225,33 L1235,5 L1242,58 L1250,30 L1270,30 C1280,30 1290,18 1305,30 L1350,30 L1400,30 C1405,30 1408,26 1412,30 L1420,30 L1425,33 L1435,5 L1442,58 L1450,30 L1470,30 C1480,30 1490,18 1505,30 L1600,30"
         stroke="#ff4081"
-        stroke-width="4"
+        stroke-width="2.5"
         fill="none"
       />
     </svg>
