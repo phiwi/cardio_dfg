@@ -35,15 +35,46 @@ a {
   color: #90caf9;
 }
 
-/* Container for the ECG with a fade-out mask */
-.ecg-container {
+/* --- ECG Monitor Animation Styles --- */
+
+@keyframes draw-and-fade {
+  from { mask-position: 100% 0; -webkit-mask-position: 100% 0; }
+  to { mask-position: 0% 0; -webkit-mask-position: 0% 0; }
+}
+
+.ecg-monitor-container {
   width: 100%;
   margin: 1.2em 0;
   overflow: hidden;
   position: relative;
   height: 60px;
-  -webkit-mask: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-  mask: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.ecg-monitor-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* The animated mask that creates the drawing effect */
+  mask-size: 200% 100%;
+  mask-image: linear-gradient(to right,
+    transparent 35%,
+    rgba(0,0,0,0.8) 45%,
+    black 49%,
+    transparent 50%
+  );
+  
+  -webkit-mask-size: 200% 100%;
+  -webkit-mask-image: linear-gradient(to right,
+    transparent 35%,
+    rgba(0,0,0,0.8) 45%,
+    black 49%,
+    transparent 50%
+  );
+
+  animation: draw-and-fade 5s linear infinite;
 }
 </style>
 
@@ -57,34 +88,19 @@ a {
     <span style="font-size: 0.7em; color: #90caf9;">with a Rich, Multi-Modal German Clinical Corpus</span>
   </h3>
 
-  <!-- Animated, responsive ECG heartbeat line -->
-  <div class="ecg-container">
-    <svg
-      v-motion
-      :initial="{ x: '-50%' }"
-      :enter="{
-        x: '0%',
-        transition: {
-          duration: 4000,
-          ease: 'linear',
-          repeat: Infinity,
-          repeatType: 'loop',
-        },
-      }"
-      width="200%" height="60" viewBox="0 0 1600 60" fill="none"
-      style="display: block; position: absolute; left: 0; top: 0; opacity: 0.6;"
-    >
-      <!-- 
-        This path is meticulously designed for a seamless loop.
-        The waveform from 0-800 is visually identical to the one from 800-1600.
-        This ensures no "jump" when the animation repeats.
-      -->
+  <!-- ECG Monitor Container -->
+  <div class="ecg-monitor-container">
+    <svg class="ecg-monitor-svg" viewBox="0 0 800 60" fill="none">
+      <!-- The static ECG path that is revealed by the mask -->
       <path
-        d="M0,30 L150,30 C155,30 158,26 162,30 L170,30 L175,33 L185,5 L192,58 L200,30 L220,30 C230,30 240,18 255,30 L400,30 C405,30 408,26 412,30 L420,30 L425,33 L435,5 L442,58 L450,30 L470,30 C480,30 490,18 505,30 L550,30 L600,30 C605,30 608,26 612,30 L620,30 L625,33 L635,5 L642,58 L650,30 L670,30 C680,30 690,18 705,30 L800,30 M800,30 L950,30 C955,30 958,26 962,30 L970,30 L975,33 L985,5 L992,58 L1000,30 L1020,30 C1030,30 1040,18 1055,30 L1200,30 C1205,30 1208,26 1212,30 L1220,30 L1225,33 L1235,5 L1242,58 L1250,30 L1270,30 C1280,30 1290,18 1305,30 L1350,30 L1400,30 C1405,30 1408,26 1412,30 L1420,30 L1425,33 L1435,5 L1442,58 L1450,30 L1470,30 C1480,30 1490,18 1505,30 L1600,30"
+        d="M-100,30 L0,30 C5,30 8,26 12,30 L20,30 L25,33 L35,5 L42,58 L50,30 L70,30 C80,30 90,18 105,30 L200,30 C205,30 208,26 212,30 L220,30 L225,33 L235,5 L242,58 L250,30 L270,30 C280,30 290,18 305,30 L400,30 C405,30 408,26 412,30 L420,30 L425,33 L435,5 L442,58 L450,30 L470,30 C480,30 490,18 505,30 L600,30 C605,30 608,26 612,30 L620,30 L625,33 L635,5 L642,58 L650,30 L670,30 C680,30 690,18 705,30 L800,30 L900,30"
         stroke="#ff4081"
         stroke-width="2.5"
+        stroke-linecap="round"
         fill="none"
+        opacity="0.6"
       />
+      <!-- The <circle> element has been removed -->
     </svg>
   </div>
 
@@ -851,7 +867,7 @@ layout: center
 }
 
 .ecg-divider {
-  width: 80%; /* Increased width to accommodate the longer line */
+  width: 80%;
   max-width: 600px;
   margin: 1em 0;
   /* Applying the safe CSS animation here */
@@ -881,7 +897,7 @@ layout: center
 <!-- The SVG is now longer and will be animated via its CSS class -->
 <svg class="ecg-divider" viewBox="0 0 800 60" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path
-    d="M0,30 L120,30 C125,30 128,26 132,30 L140,30 L145,33 L155,5 L162,58 L170,30 L190,30 C200,30 210,18 225,30 L320,30 C325,30 328,26 332,30 L340,30 L345,33 L355,5 L362,58 L370,30 L390,30 C400,30 410,18 425,30 L800,30"
+    d="M0,30 L120,30 C125,30 128,26 132,30 L140,30 L145,33 L155,5 L162,58 L170,30 L190,30 C200,30 210,18 225,30 L320,30 C325,30 328,26 332,30 L340,30 L345,33 L355,5 L362,58 L370,30 L390,30 C400,30 410,18 425,30 L520,30 C525,30 528,26 532,30 L540,30 L545,33 L555,5 L562,58 L570,30 L590,30 C600,30 610,18 625,30 L800,30"
     stroke="#ff4081"
     stroke-width="3"
     stroke-linecap="round"
