@@ -215,7 +215,7 @@ flowchart TD
 <div style="height: 1.5em;"></div>
 
 <!-- What is missing in existing corpora -->
-<div
+<div v-click
   v-motion="{
     initial: { opacity: 0, y: 30 },
     enter: { opacity: 1, y: 0, transition: { duration: 1200 } }
@@ -240,10 +240,10 @@ flowchart TD
 </div>
 
 <!-- What CARDIO:DE++ will contribute -->
-<div
+<div v-click
   v-motion="{
     initial: { opacity: 0, y: 30 },
-    enter: { opacity: 1, y: 0, transition: { delay: 10000, duration: 1200 } }
+    enter: { opacity: 1, y: 0, transition: { duration: 1200 } }
   }"
   style="background: linear-gradient(90deg, #1976d222 60%, #00bcd422 100%); border-left: 6px solid #1976d2; border-radius: 10px; padding: 1em 1.2em;"
 >
@@ -276,18 +276,49 @@ flowchart TD
 
 <div style="height: 1.5em;"></div>
 
-<div class="vcenter">
-<ul>
-  <li><b>Expand corpus heterogeneity:</b><br> Add 500 new de-identified discharge letters from two sites</li>
-  <li><b>Integrate structured tabular data:</b><br> Laboratory values, vital signs, ICD-10 codes, procedures, medications</li>
-  <li><b>Enable advanced AI research:</b>
-    <ul>
-      <li>Synthetic data generation</li>
-      <li>Data-to-text and text-to-data NLP</li>
-      <li>Patient phenotyping and subgroup discovery</li>
-    </ul>
-  </li>
-</ul>
+<div style="display: flex; gap: 2em; flex-wrap: nowrap; justify-content: center; align-items: stretch;">
+
+  <div v-click
+    v-motion="{
+      initial: { opacity: 0, y: 40 },
+      enter: { opacity: 1, y: 0, transition: { duration: 800 } }
+    }"
+    :appear="true"
+    style="background: linear-gradient(120deg, #1976d2 80%, #00bcd4 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1.2em 1.5em; min-width: 260px; max-width: 320px; margin-bottom: 1em; flex: 1 1 0;"
+  >
+    <span style="font-size: 2em; vertical-align: middle;">🧬</span>
+    <b>Expand corpus heterogeneity</b>
+    <div style="font-size: 1em; margin-top: 0.5em;">Add 500 new de-identified discharge letters from two sites</div>
+  </div>
+
+  <div v-click
+    v-motion="{
+      initial: { opacity: 0, y: 40 },
+      enter: { opacity: 1, y: 0, transition: { duration: 800 } }
+    }"
+    :appear="true"
+    style="background: linear-gradient(120deg, #00bcd4 80%, #1976d2 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1.2em 1.5em; min-width: 260px; max-width: 320px; margin-bottom: 1em; flex: 1 1 0;"
+  >
+    <span style="font-size: 2em; vertical-align: middle;">📊</span>
+    <b>Integrate structured tabular data</b>
+    <div style="font-size: 1em; margin-top: 0.5em;">Laboratory values, vital signs, ICD-10 codes, procedures, medications</div>
+  </div>
+
+  <div v-click
+    v-motion="{
+      initial: { opacity: 0, y: 40 },
+      enter: { opacity: 1, y: 0, transition: { duration: 800 } }
+    }"
+    :appear="true"
+    style="background: linear-gradient(120deg, #43e97b 80%, #38f9d7 100%); color: #1976d2; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1.2em 1.5em; min-width: 260px; max-width: 320px; margin-bottom: 1em; flex: 1 1 0;"
+  >
+    <span style="font-size: 2em; vertical-align: middle;">🤖</span>
+    <b>Enable advanced AI research</b>
+    <div style="font-size: 1em; margin-top: 0.5em;">
+      Synthetic data generation, data-to-text and text-to-data NLP, patient phenotyping and subgroup discovery
+    </div>
+  </div>
+
 </div>
 
 ---
@@ -767,42 +798,26 @@ flowchart TD
 
 <div style="position: relative; min-height: 55vh;">
 
-  <ul style="list-style: disc inside; padding-left: 0; position: relative, z-index: 1;">
-    <li v-motion="{
-          initial: { opacity: 0, x: -40 },
-          enter: { opacity: 1, x: 0, transition: { delay: 200, duration: 1200 } }
-        }"
-        style="margin-bottom: 1.2em; display: flex; align-items: center;">
+  <ul style="list-style: disc inside; padding-left: 0; position: relative; z-index: 1;">
+    <li v-click style="margin-bottom: 1.2em; display: flex; align-items: center;">
       <span style="display: inline-flex; align-items: center;">
         First large, multi-modal, parallel German cardiovascular corpus
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4c8.png" alt="chart" width="28" height="28" style="vertical-align: middle; margin-left: 0.7em;">
       </span>
     </li>
-    <li v-motion="{
-          initial: { opacity: 0, x: -40 },
-          enter: { opacity: 1, x: 0, transition: { delay: 900, duration: 1200 } }
-        }"
-        style="margin-bottom: 1.2em; display: flex; align-items: center;">
+    <li v-click style="margin-bottom: 1.2em; display: flex; align-items: center;">
       <span style="display: inline-flex; align-items: center;">
         Enables robust, generalizable AI models for clinical NLP
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f916.png" alt="robot" width="28" height="28" style="vertical-align: middle; margin-left: 0.7em;">
       </span>
     </li>
-    <li v-motion="{
-          initial: { opacity: 0, x: -40 },
-          enter: { opacity: 1, x: 0, transition: { delay: 1600, duration: 1200 } }
-        }"
-        style="margin-bottom: 1.2em; display: flex; align-items: center;">
+    <li v-click style="margin-bottom: 1.2em; display: flex; align-items: center;">
       <span style="display: inline-flex; align-items: center;">
         Supports synthetic data generation and advanced patient phenotyping
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f9ec.png" alt="dna" width="28" height="28" style="vertical-align: middle; margin-left: 0.7em;">
       </span>
     </li>
-    <li v-motion="{
-          initial: { opacity: 0, x: -40 },
-          enter: { opacity: 1, x: 0, transition: { delay: 2300, duration: 1200 } }
-        }"
-        style="margin-bottom: 1.2em; display: flex; align-items: center;">
+    <li v-click style="margin-bottom: 1.2em; display: flex; align-items: center;">
       <span style="display: inline-flex; align-items: center;">
         Fosters collaboration and innovation in German-speaking clinical NLP
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f91d.png" alt="handshake" width="28" height="28" style="vertical-align: middle; margin-left: 0.7em;">
@@ -810,36 +825,71 @@ flowchart TD
     </li>
   </ul>
 </div>
+
+---
+layout: center
 ---
 
-<div style="display: flex; flex-direction: column; align-items: center; min-height: 100vh;">
+<style>
+/* Keyframes for the subtle pulsating animation */
+@keyframes pulse-line {
+  from {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1.0;
+  }
+}
 
-  <!-- Animated "Thank you!" slogan near the top -->
-  <div
-    v-motion="{
-      initial: { opacity: 0, y: -60, scale: 0.93 },
-      enter: { opacity: 1, y: 0, scale: 1.08, transition: { delay: 200, duration: 1200, ease: 'easeOut' } }
-    }"
-    style="font-size: 3.2em; font-weight: 800; color: #00bcd4; text-shadow: 0 4px 28px #1976d2cc, 0 2px 0 #fff; letter-spacing: 0.05em; margin-top: 7vh; margin-bottom: 2.2em; text-align: center;">
-    Thank you!
-  </div>
+/* Scoped styles for this specific slide layout */
+.slidev-layout.center h1 {
+  font-size: 3.5em;
+  color: #00bcd4;
+  font-weight: 800;
+  margin-bottom: 0.5em;
+  text-shadow: 0 3px 20px #1976d299;
+}
 
-  <!-- Animated pulsing heart SVG, centered below the slogan -->
-  <svg
-    v-motion="{
-      initial: { scale: 1, opacity: 0.10 },
-      enter: { scale: 1.18, opacity: 0.18, transition: { repeat: Infinity, repeatType: 'reverse', duration: 1800, ease: 'easeInOut' } }
-    }"
-    width="180" height="180" viewBox="0 0 24 24" fill="none"
-    style="margin-bottom: 0;">
-    <path
-      fill="#ff4081"
-      stroke="#1976d2"
-      stroke-width="2.2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M12 21s-6.5-5.05-9.14-8.13C1.09 10.2 1 7.36 3.05 5.32a6.23 6.23 0 0 1 8.82 0l.13.13.13-.13a6.23 6.23 0 0 1 8.82 0c2.05 2.04 1.96 4.88.19 7.55C18.5 15.95 12 21 12 21z"
-    />
-  </svg>
+.ecg-divider {
+  width: 80%; /* Increased width to accommodate the longer line */
+  max-width: 600px;
+  margin: 1em 0;
+  /* Applying the safe CSS animation here */
+  animation: pulse-line 2200ms ease-in-out infinite alternate;
+}
 
+.contact-info {
+  margin-top: 1.5em;
+  font-size: 0.9em;
+  color: #e3f0fa;
+  line-height: 1.6;
+}
+
+.contact-info a {
+  color: #90caf9;
+  text-decoration: none;
+  border-bottom: 1px dotted #90caf988;
+}
+</style>
+
+<!-- The entire content is automatically centered by the layout -->
+
+<h1>
+  Thank you!
+</h1>
+
+<!-- The SVG is now longer and will be animated via its CSS class -->
+<svg class="ecg-divider" viewBox="0 0 800 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M0,30 L120,30 C125,30 128,26 132,30 L140,30 L145,33 L155,5 L162,58 L170,30 L190,30 C200,30 210,18 225,30 L320,30 C325,30 328,26 332,30 L340,30 L345,33 L355,5 L362,58 L370,30 L390,30 C400,30 410,18 425,30 L800,30"
+    stroke="#ff4081"
+    stroke-width="3"
+    stroke-linecap="round"
+  />
+</svg>
+
+<div class="contact-info">
+  <b>Philipp Wiesenbach</b><br>
+  <a href="mailto:philipp.wiesenbach@uni-heidelberg.de">philipp.wiesenbach@uni-heidelberg.de</a> 
+  <!-- | <a href="https://project-website.com">project-website.com</a> -->
 </div>
