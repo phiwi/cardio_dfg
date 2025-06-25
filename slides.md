@@ -214,54 +214,61 @@ flowchart TD
 
 <div style="height: 1.5em;"></div>
 
-<ul style="list-style: disc inside; padding-left: 0;">
-  <li>
-    <span style="display: inline-flex; align-items: center;">
-      Existing corpora lack:
-      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/26a0.png" alt="warning" width="22" height="22" style="vertical-align: middle; margin-left: 0.6em;">
-    </span>
-    <ul>
-      <li>
-        <span style="display: inline-flex; align-items: center;">
-          Multi-site data (risk of site bias)
-          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f465.png" alt="people" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
-        </span>
-      </li>
-      <li>
-        <span style="display: inline-flex; align-items: center;">
-          Explicitly parallel, structured tabular data
-          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4c8.png" alt="chart" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
-        </span>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <span style="display: inline-flex; align-items: center;">
-      CARDIO:DE++ will:
-      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f680.png" alt="rocket" width="22" height="22" style="vertical-align: middle; margin-left: 0.6em;">
-    </span>
-    <ul>
-      <li>
-        <span style="display: inline-flex; align-items: center;">
-          Add data from Universitätsklinikum Mannheim
-          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3e5.png" alt="hospital" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
-        </span>
-      </li>
-      <li>
-        <span style="display: inline-flex; align-items: center;">
-          Link free-text with structured clinical parameters
-          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f517.png" alt="link" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
-        </span>
-      </li>
-      <li>
-        <span style="display: inline-flex; align-items: center;">
-          Enable advanced text-to-data and data-to-text AI models
-          <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f916.png" alt="robot" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
-        </span>
-      </li>
-    </ul>
-  </li>
-</ul>
+<!-- What is missing in existing corpora -->
+<div
+  v-motion="{
+    initial: { opacity: 0, y: 30 },
+    enter: { opacity: 1, y: 0, transition: { duration: 1200 } }
+  }"
+  style="background: linear-gradient(90deg, #ff980022 60%, #ffeb3b22 100%); border-left: 6px solid #ff9800; border-radius: 10px; margin-bottom: 1.5em; padding: 1em 1.2em;"
+>
+  <b style="color: #ff9800; font-size: 1.1em;">Existing corpora lack:</b>
+  <ul style="list-style: disc inside; padding-left: 0; margin-top: 0.6em;">
+    <li>
+      <span style="display: inline-flex; align-items: center;">
+        Multi-site data (risk of site bias)
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f465.png" alt="people" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
+      </span>
+    </li>
+    <li>
+      <span style="display: inline-flex; align-items: center;">
+        Explicitly parallel, structured tabular data
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4c8.png" alt="chart" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
+      </span>
+    </li>
+  </ul>
+</div>
+
+<!-- What CARDIO:DE++ will contribute -->
+<div
+  v-motion="{
+    initial: { opacity: 0, y: 30 },
+    enter: { opacity: 1, y: 0, transition: { delay: 10000, duration: 1200 } }
+  }"
+  style="background: linear-gradient(90deg, #1976d222 60%, #00bcd422 100%); border-left: 6px solid #1976d2; border-radius: 10px; padding: 1em 1.2em;"
+>
+  <b style="color: #1976d2; font-size: 1.1em;">CARDIO:DE++ will:</b>
+  <ul style="list-style: disc inside; padding-left: 0; margin-top: 0.6em;">
+    <li>
+      <span style="display: inline-flex; align-items: center;">
+        Add data from Universitätsklinikum Mannheim
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3e5.png" alt="hospital" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
+      </span>
+    </li>
+    <li>
+      <span style="display: inline-flex; align-items: center;">
+        Link free-text with structured clinical parameters
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f517.png" alt="link" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
+      </span>
+    </li>
+    <li>
+      <span style="display: inline-flex; align-items: center;">
+        Enable advanced text-to-data and data-to-text AI models
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f916.png" alt="robot" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
+      </span>
+    </li>
+  </ul>
+</div>
 
 ---
 
@@ -760,7 +767,7 @@ flowchart TD
 
 <div style="position: relative; min-height: 55vh;">
 
-  <ul style="list-style: disc inside; padding-left: 0; position: relative; z-index: 1;">
+  <ul style="list-style: disc inside; padding-left: 0; position: relative, z-index: 1;">
     <li v-motion="{
           initial: { opacity: 0, x: -40 },
           enter: { opacity: 1, x: 0, transition: { delay: 200, duration: 1200 } }
