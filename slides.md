@@ -76,6 +76,20 @@ a {
 
   animation: draw-and-fade 5s linear infinite;
 }
+.themed-icon {
+  color: #ff4081;
+  font-size: 1.4em;
+  margin-left: 0.6em;
+  vertical-align: -0.2em;
+}
+.diagram-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.5s ease-in-out;
+}
 </style>
 
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh; text-align: center; margin-top: 8vh;">
@@ -112,35 +126,33 @@ a {
 
 ---
 
-## <span class="section-title">Motivation</span>
-
-<!-- Animated, left-aligned ECG line that scrolls and fades in/out -->
+<div class="section-title">Motivation</div>
 
 <div style="height: 1.5em;"></div>
 
-<ul style="list-style: disc inside; padding-left: 0;">
+<ul class="themed-list">
   <li>
     <span style="display: inline-flex; align-items: center;">
       Scarcity of high-quality, freely accessible German clinical text corpora
-      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4dd.png" alt="document" width="22" height="22" style="vertical-align: middle; margin-left: 0.6em;">
+      <div class="i-carbon-document themed-icon" />
     </span>
   </li>
   <li>
     <span style="display: inline-flex; align-items: center;">
       Strict data protection (GDPR) limits data sharing
-      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f512.png" alt="lock" width="22" height="22" style="vertical-align: middle; margin-left: 0.6em;">
+      <div class="i-carbon-locked themed-icon" />
     </span>
   </li>
   <li>
     <span style="display: inline-flex; align-items: center;">
       Existing English corpora (e.g., MIMIC-III, i2b2) have driven clinical NLP
-      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f30e.png" alt="globe" width="22" height="22" style="vertical-align: middle; margin-left: 0.6em;">
+      <div class="i-carbon-language themed-icon" />
     </span>
   </li>
   <li>
     <span style="display: inline-flex; align-items: center;">
       German resources are limited and lack multi-modal, parallel data
-      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f50d.png" alt="magnifier" width="22" height="22" style="vertical-align: middle; margin-left: 0.6em;">
+      <div class="i-carbon-search themed-icon" />
     </span>
   </li>
 </ul>
@@ -148,7 +160,9 @@ a {
 <div style="height: 5.5em;"></div>
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1976d2', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#0f2027', 'lineColor': '#90caf9', 'textColor': '#1976d2', 'mainBkg': '#e3f0fa', 'nodeBorder': '#1976d2' }}}%%
 flowchart TD
+
     A["Scarcity of German<br>  clinical corpora"]
     B["Strict GDPR/data<br>  protection"]
     C["English corpora <br> drive progress"]
@@ -160,11 +174,8 @@ flowchart TD
     C --> E
     D --> E
 
-    classDef default fill:#e3f0fa,stroke:#1976d2,stroke-width:2px,color:#1976d2;
     classDef E fill:#1976d2,stroke:#0f2027,stroke-width:3px,color:#fff;
 ```
-
-
 
 ---
 
@@ -366,23 +377,6 @@ flowchart LR
     EXT --> CARDIO_DEPP
 ``` 
 
-<!-- 
-```mermaid
-%%{init: {'themeVariables': { 'fontSize': '13px', 'nodePadding': '10', 'nodeSpacing': '40' }}}%%
-flowchart TD
-    A1["CARDIO:DE Corpus<br><span style='font-size:0.8em'>500 Letters (Heidelberg)<br>Manual Annotations</span>"]
-    B1["+500 Letters<br>(Heidelberg & Mannheim)"]
-    B2["Parallel Tabular Data<br>(Labs, Vitals, ICD-10,<br> Procedures, Meds)"]
-    C1["CARDIO:DE++<br><span style='font-size:0.8em'>1,000 Letters (2 Sites)<br>Multi-Modal: Text + Structured Data<br>Expanded Annotations</span>"]
-
-    A1 --> B1
-    A1 --> B2
-    B1 --> C1
-    B2 --> C1
-```
--->
-
-
 ## <span class="section-title">CARDIO:DE++ Enablements</span>
 
 <div style="height: 1.5em;"></div>
@@ -517,8 +511,8 @@ flowchart TD
   <span style="font-size: 1.6em; margin-right: 0.7em; margin-top: -0.1em;">🔒</span>
   <span>
     <b style="font-weight: 600; color: #1976d2;">Key resource:</b>
-    <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2995716/" target="_blank">
-      Meystre et al., Review of De-identification Techniques for Clinical Text, JAMIA (2010)
+    <a href="https://iapp.org/news/a/does-anonymization-or-de-identification-require-consent-under-the-gdpr" target="_blank">
+      Does anonymization or de-identification require consent under the GDPR?
     </a>
   </span>
 </div>
@@ -844,6 +838,7 @@ flowchart TD
 
 ---
 layout: center
+slidenumbers: false
 ---
 
 <style>
@@ -867,10 +862,9 @@ layout: center
 }
 
 .ecg-divider {
-  width: 80%;
-  max-width: 600px;
+  /* The width is kept the same for perfect alignment */
+  width: 340px;
   margin: 1em 0;
-  /* Applying the safe CSS animation here */
   animation: pulse-line 2200ms ease-in-out infinite alternate;
 }
 
@@ -894,12 +888,15 @@ layout: center
   Thank you!
 </h1>
 
-<!-- The SVG is now longer and will be animated via its CSS class -->
-<svg class="ecg-divider" viewBox="0 0 800 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- 
+  The SVG now contains a completely new path with 4 smaller, compressed peaks.
+  The stroke-width is reduced for a finer look.
+-->
+<svg class="ecg-divider" viewBox="0 0 520 60" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path
-    d="M0,30 L120,30 C125,30 128,26 132,30 L140,30 L145,33 L155,5 L162,58 L170,30 L190,30 C200,30 210,18 225,30 L320,30 C325,30 328,26 332,30 L340,30 L345,33 L355,5 L362,58 L370,30 L390,30 C400,30 410,18 425,30 L520,30 C525,30 528,26 532,30 L540,30 L545,33 L555,5 L562,58 L570,30 L590,30 C600,30 610,18 625,30 L800,30"
+    d="M0,30 L20,30 C23,30 25,28 28,30 L35,30 L40,32 L45,20 L50,40 L55,30 L65,30 C70,30 75,26 80,30 L130,30 C133,30 135,28 138,30 L145,30 L150,32 L155,20 L160,40 L165,30 L175,30 C180,30 185,26 190,30 L260,30 C263,30 265,28 268,30 L275,30 L280,32 L285,20 L290,40 L295,30 L305,30 C310,30 315,26 320,30 L390,30 C393,30 395,28 398,30 L405,30 L410,32 L415,20 L420,40 L425,30 L435,30 C440,30 445,26 450,30 L520,30"
     stroke="#ff4081"
-    stroke-width="3"
+    stroke-width="2.5"
     stroke-linecap="round"
   />
 </svg>
@@ -907,5 +904,4 @@ layout: center
 <div class="contact-info">
   <b>Philipp Wiesenbach</b><br>
   <a href="mailto:philipp.wiesenbach@uni-heidelberg.de">philipp.wiesenbach@uni-heidelberg.de</a> 
-  <!-- | <a href="https://project-website.com">project-website.com</a> -->
 </div>
