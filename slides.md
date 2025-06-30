@@ -4,7 +4,7 @@ colorSchema: all
 highlighter: shiki
 lineNumbers: true
 transition: slide-left
-title: CARDIO:DE++ – Powering Next-Generation Cardiovascular AI
+title: CARDIO:DE++ – Powering Next-Generation Cardiovascular AI live!
 info: >
   A funding proposal summary for a multi-modal German clinical corpus project.
 layout: cover
