@@ -127,7 +127,7 @@ a {
 
   <div style="color: #e3f0fa; font-size: 1.1em; margin-bottom: 0.5em;">
     <b>Philipp Wiesenbach, Prof. Christoph Dieterich, Prof. Nicolas Geis (UKHD)</b><br>
-    <b>Simone Britsch (UMM)<em>tbd.</em></b><br>
+    <b>Simone Britsch (UMM)</b>
   </div>
 </div>
 
@@ -378,6 +378,7 @@ flowchart TD
 <!-- This flex container manages the vertical layout of the two diagrams -->
 <div style="display: flex; flex-direction: column; justify-content: space-around; height: 85%;">
 
+<div v-click>
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 
     'primaryColor': 'transparent', 
@@ -409,7 +410,9 @@ flowchart LR
     class CARDIO_DE,EXT,A1,A2,B1,B2,C1,C2 leaf;
     class CARDIO_DEPP main;
 ```
+</div>
 
+<div v-click>
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 
     'primaryColor': 'transparent', 
@@ -438,6 +441,7 @@ flowchart TD
     classDef main fill:#00bcd433,stroke:#ff4081,stroke-width:3px,color:#e3f0fa,font-weight:bold;
     classDef leaf fill:transparent,stroke:#ff4081,stroke-width:2px,color:#e3f0fa;
 ```
+</div>
 
 </div>
 
