@@ -189,7 +189,10 @@ flowchart TD
     C --> E
     D --> E
 
-    style A,B,C,D stroke-width:2px
+    style A stroke-width:2px
+    style B stroke-width:2px
+    style C stroke-width:2px
+    style D stroke-width:2px
     style E stroke-width:3px,font-weight:bold
 ```
 
@@ -917,6 +920,48 @@ flowchart TD
       </span>
     </li>
   </ul>
+</div>
+
+---
+
+## <span class="section-title">Backup: Alignierung der Labordaten</span>
+
+<div style="height: 1.5em;"></div>
+
+<div style="flex-grow: 1; display: flex; justify-content: center; align-items: center; min-height: 0;">
+  <img 
+    src="/labor.png" 
+    alt="Backup slide showing lab data" 
+    style="max-width: 85%; max-height: 75vh; object-fit: contain; border-radius: 12px; box-shadow: 0 4px 24px #1976d288;"
+  >
+</div>
+
+---
+
+## <span class="section-title">Backup: Zuordnung Einrichtung <--> Daten</span>
+
+<div style="height: 1.5em;"></div>
+
+<div style="flex-grow: 1; display: flex; justify-content: center; align-items: center; min-height: 0;">
+  <img 
+    src="/zuordnung.png" 
+    alt="Backup slide showing data assignment" 
+    style="max-width: 85%; max-height: 75vh; object-fit: contain; border-radius: 12px; box-shadow: 0 4px 24px #1976d288;"
+  >
+</div>
+
+---
+
+## <span class="section-title">Backup: Aufteilung</span>
+
+<div style="height: 1.5em;"></div>
+
+<div style="flex-grow: 1; display: flex; justify-content: center; align-items: center; min-height: 0;">
+  <img 
+    src="/aufteilung.png" 
+    alt="Backup slide showing data distribution" 
+    style="max-width: 85%; max-height: 75vh; object-fit: contain; border-radius: 12px; box-shadow: 0 4px 24px #1976d288;"
+  >
 </div>
 
 ---
