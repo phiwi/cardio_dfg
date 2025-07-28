@@ -378,17 +378,15 @@ flowchart TD
 <!-- This flex container manages the vertical layout of the two diagrams -->
 <div style="display: flex; flex-direction: column; justify-content: space-around; height: 85%;">
 
-<!-- 
-  This container uses v-clicks to overlay three diagrams.
-  Each diagram contains the *full* layout, but styles future elements
-  to be invisible, preventing any resizing or repositioning on click.
--->
-<div class="unroll-container" style="position: relative; min-height: 200px;">
-<v-clicks>
-
-<!-- Step 1: Only CARDIO:DE is visible -->
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'mainBkg': 'transparent' }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 
+    'primaryColor': 'transparent', 
+    'primaryTextColor': '#e3f0fa', 
+    'lineColor': '#ff4081', 
+    'textColor': '#e3f0fa', 
+    'mainBkg': 'transparent', 
+    'nodeBorder': '#ff4081' 
+}}}%%
 flowchart LR
     subgraph CARDIO_DE["CARDIO:DE Corpus"]
       A1["500 Cardiovascular Discharge Letters<br/>(Heidelberg)"]
@@ -404,73 +402,14 @@ flowchart LR
     end
     CARDIO_DE --> EXT
     EXT --> CARDIO_DEPP
-    style CARDIO_DE fill:transparent,stroke:#ff4081,stroke-width:2px, primaryTextColor:'#e3f0fa', 
-    style EXT fill:transparent,stroke:transparent,color:transparent
-    style CARDIO_DEPP fill:transparent,stroke:transparent,color:transparent
-    style B1 color:transparent,fill:transparent,stroke:transparent
-    style B2 color:transparent,fill:transparent,stroke:transparent
-    style C1 color:transparent,fill:transparent,stroke:transparent
-    style C2 color:transparent,fill:transparent,stroke:transparent
-    linkStyle 0,1 stroke:transparent
 
+    classDef main fill:#00bcd433,stroke:#ff4081,stroke-width:3px,color:#e3f0fa,font-weight:bold;
     classDef leaf fill:transparent,stroke:#ff4081,stroke-width:2px,color:#e3f0fa;
+
+    class CARDIO_DE,EXT,A1,A2,B1,B2,C1,C2 leaf;
+    class CARDIO_DEPP main;
 ```
 
-<!-- Step 2: CARDIO:DE and Enhancements are visible -->
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'mainBkg': 'transparent' }}}%%
-flowchart LR
-    subgraph CARDIO_DE["CARDIO:DE Corpus"]
-      A1["500 Cardiovascular Discharge Letters<br/>(Heidelberg)"]
-      A2["Manual Annotations:<br/>Medication, Sections"]
-    end
-    subgraph EXT["Enhancements"]
-      B1["2 letters+ per patient"]
-      B2["Add:<br> Labs, ECGs, Echos, Angios"]
-    end
-    subgraph CARDIO_DEPP["CARDIO:DE++"]
-      C1["1,000 discharge Letters<br/>(2 Sites)"]
-      C2["Multi-Modal:<br/>Text + Structured Data"]
-    end
-    CARDIO_DE --> EXT
-    EXT --> CARDIO_DEPP
-    style CARDIO_DE fill:#00bcd422,stroke:#ff4081,stroke-width:2px
-    style EXT fill:#00bcd422,stroke:#ff4081,stroke-width:2px
-    style CARDIO_DEPP fill:transparent,stroke:transparent,color:transparent
-    style C1 color:transparent,fill:transparent,stroke:transparent
-    style C2 color:transparent,fill:transparent,stroke:transparent
-    linkStyle 0 stroke:#ff4081
-    linkStyle 1 stroke:transparent
-```
-
-<!-- Step 3: Full diagram is visible -->
-```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'mainBkg': 'transparent' }}}%%
-flowchart LR
-    subgraph CARDIO_DE["CARDIO:DE Corpus"]
-      A1["500 Cardiovascular Discharge Letters<br/>(Heidelberg)"]
-      A2["Manual Annotations:<br/>Medication, Sections"]
-    end
-    subgraph EXT["Enhancements"]
-      B1["2 letters+ per patient"]
-      B2["Add:<br> Labs, ECGs, Echos, Angios"]
-    end
-    subgraph CARDIO_DEPP["CARDIO:DE++"]
-      C1["1,000 discharge Letters<br/>(2 Sites)"]
-      C2["Multi-Modal:<br/>Text + Structured Data"]
-    end
-    CARDIO_DE --> EXT
-    EXT --> CARDIO_DEPP
-    style CARDIO_DE fill:#00bcd422,stroke:#ff4081,stroke-width:2px
-    style EXT fill:#00bcd422,stroke:#ff4081,stroke-width:2px
-    style CARDIO_DEPP fill:#00bcd433,stroke:#ff4081,stroke-width:3px,font-weight:bold
-    linkStyle 0,1 stroke:#ff4081
-```
-
-</v-clicks>
-</div>
-
-<div v-click>
 ```mermaid
 %%{init: {'theme': 'base', 'themeVariables': { 
     'primaryColor': 'transparent', 
@@ -499,7 +438,6 @@ flowchart TD
     classDef main fill:#00bcd433,stroke:#ff4081,stroke-width:3px,color:#e3f0fa,font-weight:bold;
     classDef leaf fill:transparent,stroke:#ff4081,stroke-width:2px,color:#e3f0fa;
 ```
-</div>
 
 </div>
 
@@ -597,7 +535,7 @@ flowchart TD
       <li>Patient consent and data collection at both sites</li>
       <li>extract structured numerical/categorical data and link to SNOMED CT</li>
       <li>Collect textual reports of findings from echocardiograms and coronary angiography</li>
-      <li>Acquire echocardiogram videos in suitable digital formats, preserving resolution for analysis.</li>
+      <li>Acquire echocardiogram and angiography videos in suitable digital formats</li>
       <li>Acquire contemporaneous 12-lead ECGs as raw digital time series data.</li>
     </ul>
   </li>
@@ -949,7 +887,7 @@ flowchart TD
 
 <div style="position: relative; min-height: 55vh;">
 
-  <ul style="list-style: disc inside; padding-left: 0; position: relative; z-index: 1;">
+  <ul style="list-style: disc inside; padding-left: 0; position: relative, z-index: 1;">
     <li v-click style="margin-bottom: 1.2em; display: flex; align-items: center;">
       <span style="display: inline-flex; align-items: center;">
         First large, multi-modal, parallel German cardiovascular corpus
@@ -1006,7 +944,7 @@ slidenumbers: false
   /* The width is kept the same for perfect alignment */
   width: 340px;
   margin: 1em 0;
-  animation: pulse-line 2200ms ease-in-out infinite alternate;
+  animation: pulse-line 2200ms ease-in-out infinite;
 }
 
 .contact-info {
