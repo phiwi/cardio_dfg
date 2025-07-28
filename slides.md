@@ -90,6 +90,13 @@ a {
   height: 100%;
   transition: opacity 0.5s ease-in-out;
 }
+.unroll-container .mermaid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 </style>
 
 <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-start; min-height: 100vh; text-align: center; margin-top: 8vh;">
@@ -120,7 +127,7 @@ a {
 
   <div style="color: #e3f0fa; font-size: 1.1em; margin-bottom: 0.5em;">
     <b>Philipp Wiesenbach, Prof. Christoph Dieterich, Prof. Nicolas Geis (UKHD)</b><br>
-    <b>Simone Britsch, <em>tbd.</em>, Prof. Daniel Dürschmied (UMM)</b><br>
+    <b>Simone Britsch (UMM)<em>tbd.</em></b><br>
   </div>
 </div>
 
@@ -159,8 +166,16 @@ a {
 
 <div style="height: 5.5em;"></div>
 
+
 ```mermaid
-%%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#1976d2', 'primaryTextColor': '#ffffff', 'primaryBorderColor': '#0f2027', 'lineColor': '#90caf9', 'textColor': '#1976d2', 'mainBkg': '#e3f0fa', 'nodeBorder': '#1976d2' }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 
+    'primaryColor': 'transparent', 
+    'primaryTextColor': '#e3f0fa', 
+    'lineColor': '#ff4081', 
+    'textColor': '#e3f0fa', 
+    'mainBkg': 'transparent', 
+    'nodeBorder': '#ff4081' 
+}}}%%
 flowchart TD
 
     A["Scarcity of German<br>  clinical corpora"]
@@ -174,7 +189,8 @@ flowchart TD
     C --> E
     D --> E
 
-    classDef E fill:#1976d2,stroke:#0f2027,stroke-width:3px,color:#fff;
+    style A,B,C,D stroke-width:2px
+    style E stroke-width:3px,font-weight:bold
 ```
 
 ---
@@ -259,7 +275,7 @@ flowchart TD
     </li>
     <li>
       <span style="display: inline-flex; align-items: center;">
-        Explicitly parallel, structured tabular data
+        Explicitly parallel, multi-modal patient data
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4c8.png" alt="chart" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
       </span>
     </li>
@@ -278,19 +294,25 @@ flowchart TD
   <ul style="list-style: disc inside; padding-left: 0; margin-top: 0.6em;">
     <li>
       <span style="display: inline-flex; align-items: center;">
-        Add data from Universitätsklinikum Mannheim
+        Collect 1,000 discharge letters collected from two sites (UKHD & UMM)
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3e5.png" alt="hospital" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
       </span>
     </li>
     <li>
       <span style="display: inline-flex; align-items: center;">
-        Link free-text with structured clinical parameters
+        Collect data from differnt stays per patient enabling longitudinal analyes
+        <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3e5.png" alt="hospital" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
+      </span>
+    </li>
+    <li>
+      <span style="display: inline-flex; align-items: center;">
+        Add a multitude of medical examination data per patient 
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f517.png" alt="link" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
       </span>
     </li>
     <li>
       <span style="display: inline-flex; align-items: center;">
-        Enable advanced text-to-data and data-to-text AI models
+        Actively steer the corpus design towards least exhibited bias
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f916.png" alt="robot" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
       </span>
     </li>
@@ -301,95 +323,171 @@ flowchart TD
 
 ## <span class="section-title">Project Objectives</span>
 
-<div style="height: 1.5em;"></div>
+<div style="height: 2.5em;"></div>
 
-<div style="display: flex; gap: 2em; flex-wrap: nowrap; justify-content: center; align-items: stretch;">
+<!-- 
+  This container uses flexbox to create a responsive 2x2 grid.
+  - flex-grow: 1 allows it to fill the available vertical space.
+  - The gap and padding on the items have been reduced to prevent overflow.
+-->
+<div style="flex-grow: 1; display: flex; gap: 1.5em; flex-wrap: wrap; justify-content: center; align-content: center;">
 
+  <!-- O1: Enhance Corpus Heterogeneity -->
   <div v-click
-    v-motion="{
-      initial: { opacity: 0, y: 40 },
-      enter: { opacity: 1, y: 0, transition: { duration: 800 } }
-    }"
-    :appear="true"
-    style="background: linear-gradient(120deg, #1976d2 80%, #00bcd4 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1.2em 1.5em; min-width: 260px; max-width: 320px; margin-bottom: 1em; flex: 1 1 0;"
-  >
-    <span style="font-size: 2em; vertical-align: middle;">🧬</span>
-    <b>Expand corpus heterogeneity</b>
-    <div style="font-size: 1em; margin-top: 0.5em;">Add 500 new de-identified discharge letters from two sites</div>
+    v-motion="{ initial: { opacity: 0, y: 40 }, enter: { opacity: 1, y: 0, transition: { duration: 800 } } }"
+    style="background: linear-gradient(120deg, #1976d2 80%, #00bcd4 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1em 1.2em; flex: 1 1 40%; max-width: 45%;">
+    <span style="font-size: 1.8em; vertical-align: middle;">🧬</span>
+    <b>Enhance Corpus Heterogeneity</b>
+    <div style="font-size: 0.9em; margin-top: 0.5em;">Expand to 1,000 letters from two sites to build generalizable AI models and mitigate site-specific bias.</div>
   </div>
 
+  <!-- O2: Enable Longitudinal Assessment -->
   <div v-click
-    v-motion="{
-      initial: { opacity: 0, y: 40 },
-      enter: { opacity: 1, y: 0, transition: { duration: 800 } }
-    }"
-    :appear="true"
-    style="background: linear-gradient(120deg, #00bcd4 80%, #1976d2 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1.2em 1.5em; min-width: 260px; max-width: 320px; margin-bottom: 1em; flex: 1 1 0;"
-  >
-    <span style="font-size: 2em; vertical-align: middle;">📊</span>
-    <b>Integrate structured tabular data</b>
-    <div style="font-size: 1em; margin-top: 0.5em;">Laboratory values, vital signs, ICD-10 codes, procedures, medications</div>
+    v-motion="{ initial: { opacity: 0, y: 40 }, enter: { opacity: 1, y: 0, transition: { duration: 800 } } }"
+    style="background: linear-gradient(120deg, #1976d2 80%, #00bcd4 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1em 1.2em; flex: 1 1 40%; max-width: 45%;">
+    <span style="font-size: 1.8em; vertical-align: middle;">📈</span>
+    <b>Enable Longitudinal Assessment</b>
+    <div style="font-size: 0.9em; margin-top: 0.5em;">Collect multiple letters per patient to enable the study of disease progression and treatment response over time.</div>
   </div>
 
+  <!-- O3: Create a Rich Multi-Modal Resource -->
   <div v-click
-    v-motion="{
-      initial: { opacity: 0, y: 40 },
-      enter: { opacity: 1, y: 0, transition: { duration: 800 } }
-    }"
-    :appear="true"
-    style="background: linear-gradient(120deg, #43e97b 80%, #38f9d7 100%); color: #1976d2; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1.2em 1.5em; min-width: 260px; max-width: 320px; margin-bottom: 1em; flex: 1 1 0;"
-  >
-    <span style="font-size: 2em; vertical-align: middle;">🤖</span>
-    <b>Enable advanced AI research</b>
-    <div style="font-size: 1em; margin-top: 0.5em;">
-      Synthetic data generation, data-to-text and text-to-data NLP, patient phenotyping and subgroup discovery
-    </div>
+    v-motion="{ initial: { opacity: 0, y: 40 }, enter: { opacity: 1, y: 0, transition: { duration: 800 } } }"
+    style="background: linear-gradient(120deg, #00bcd4 80%, #1976d2 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1em 1.2em; flex: 1 1 40%; max-width: 45%;">
+    <span style="font-size: 1.8em; vertical-align: middle;">📊</span>
+    <b>Create a Rich Multi-Modal Resource</b>
+    <div style="font-size: 0.9em; margin-top: 0.5em;">Link clinical text with structured data, ECGs, and echocardiogram videos for advanced, integrated AI models.</div>
+  </div>
+
+  <!-- O4: Proactively Mitigate Data Bias -->
+  <div v-click
+    v-motion="{ initial: { opacity: 0, y: 40 }, enter: { opacity: 1, y: 0, transition: { duration: 800 } } }"
+    style="background: linear-gradient(120deg, #00bcd4 80%, #1976d2 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1em 1.2em; flex: 1 1 40%; max-width: 45%;">
+    <span style="font-size: 1.8em; vertical-align: middle;">🛡️</span>
+    <b>Proactively Mitigate Data Bias</b>
+    <div style="font-size: 0.9em; margin-top: 0.5em;">Ensure data quality and adhere to FAIR/CARE principles to foster the development of fairer and more robust AI systems.</div>
   </div>
 
 </div>
 
 ---
 
-## <span class="section-title">CARDIO:DE++ Enhancements</span>
 
-<div style="height: 1.5em;"></div>
+## <span class="section-title">CARDIO:DE++ Enhancements & Enablements</span>
 
+<!-- This flex container manages the vertical layout of the two diagrams -->
+<div style="display: flex; flex-direction: column; justify-content: space-around; height: 85%;">
+
+<!-- 
+  This container uses v-clicks to overlay three diagrams.
+  Each diagram contains the *full* layout, but styles future elements
+  to be invisible, preventing any resizing or repositioning on click.
+-->
+<div class="unroll-container" style="position: relative; min-height: 200px;">
+<v-clicks>
+
+<!-- Step 1: Only CARDIO:DE is visible -->
 ```mermaid
-%%{init: {'themeVariables': { 'fontSize': '13px', 'nodePadding': '10', 'nodeSpacing': '20' }}}%%
+%%{init: {'theme': 'base', 'themeVariables': { 'mainBkg': 'transparent' }}}%%
 flowchart LR
     subgraph CARDIO_DE["CARDIO:DE Corpus"]
       A1["500 Cardiovascular Discharge Letters<br/>(Heidelberg)"]
       A2["Manual Annotations:<br/>Medication, Sections"]
     end
-
     subgraph EXT["Enhancements"]
-      B1["+500 Discharge Letters<br/>(Heidelberg & Mannheim)"]
-      B2["Parallel Tabular Data:<br/>Labs, Vitals, ICD-10, Procedures, Meds"]
+      B1["2 letters+ per patient"]
+      B2["Add:<br> Labs, ECGs, Echos, Angios"]
     end
-
     subgraph CARDIO_DEPP["CARDIO:DE++"]
-      C1["1,000 Letters<br/>(2 Sites)"]
+      C1["1,000 discharge Letters<br/>(2 Sites)"]
       C2["Multi-Modal:<br/>Text + Structured Data"]
-      C3["Expanded Annotations"]
     end
-
     CARDIO_DE --> EXT
     EXT --> CARDIO_DEPP
-``` 
+    style CARDIO_DE fill:transparent,stroke:#ff4081,stroke-width:2px, primaryTextColor:'#e3f0fa', 
+    style EXT fill:transparent,stroke:transparent,color:transparent
+    style CARDIO_DEPP fill:transparent,stroke:transparent,color:transparent
+    style B1 color:transparent,fill:transparent,stroke:transparent
+    style B2 color:transparent,fill:transparent,stroke:transparent
+    style C1 color:transparent,fill:transparent,stroke:transparent
+    style C2 color:transparent,fill:transparent,stroke:transparent
+    linkStyle 0,1 stroke:transparent
 
-## <span class="section-title">CARDIO:DE++ Enablements</span>
+    classDef leaf fill:transparent,stroke:#ff4081,stroke-width:2px,color:#e3f0fa;
+```
 
-<div style="height: 1.5em;"></div>
-
+<!-- Step 2: CARDIO:DE and Enhancements are visible -->
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'mainBkg': 'transparent' }}}%%
+flowchart LR
+    subgraph CARDIO_DE["CARDIO:DE Corpus"]
+      A1["500 Cardiovascular Discharge Letters<br/>(Heidelberg)"]
+      A2["Manual Annotations:<br/>Medication, Sections"]
+    end
+    subgraph EXT["Enhancements"]
+      B1["2 letters+ per patient"]
+      B2["Add:<br> Labs, ECGs, Echos, Angios"]
+    end
+    subgraph CARDIO_DEPP["CARDIO:DE++"]
+      C1["1,000 discharge Letters<br/>(2 Sites)"]
+      C2["Multi-Modal:<br/>Text + Structured Data"]
+    end
+    CARDIO_DE --> EXT
+    EXT --> CARDIO_DEPP
+    style CARDIO_DE fill:#00bcd422,stroke:#ff4081,stroke-width:2px
+    style EXT fill:#00bcd422,stroke:#ff4081,stroke-width:2px
+    style CARDIO_DEPP fill:transparent,stroke:transparent,color:transparent
+    style C1 color:transparent,fill:transparent,stroke:transparent
+    style C2 color:transparent,fill:transparent,stroke:transparent
+    linkStyle 0 stroke:#ff4081
+    linkStyle 1 stroke:transparent
+```
+
+<!-- Step 3: Full diagram is visible -->
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 'mainBkg': 'transparent' }}}%%
+flowchart LR
+    subgraph CARDIO_DE["CARDIO:DE Corpus"]
+      A1["500 Cardiovascular Discharge Letters<br/>(Heidelberg)"]
+      A2["Manual Annotations:<br/>Medication, Sections"]
+    end
+    subgraph EXT["Enhancements"]
+      B1["2 letters+ per patient"]
+      B2["Add:<br> Labs, ECGs, Echos, Angios"]
+    end
+    subgraph CARDIO_DEPP["CARDIO:DE++"]
+      C1["1,000 discharge Letters<br/>(2 Sites)"]
+      C2["Multi-Modal:<br/>Text + Structured Data"]
+    end
+    CARDIO_DE --> EXT
+    EXT --> CARDIO_DEPP
+    style CARDIO_DE fill:#00bcd422,stroke:#ff4081,stroke-width:2px
+    style EXT fill:#00bcd422,stroke:#ff4081,stroke-width:2px
+    style CARDIO_DEPP fill:#00bcd433,stroke:#ff4081,stroke-width:3px,font-weight:bold
+    linkStyle 0,1 stroke:#ff4081
+```
+
+</v-clicks>
+</div>
+
+<div v-click>
+```mermaid
+%%{init: {'theme': 'base', 'themeVariables': { 
+    'primaryColor': 'transparent', 
+    'primaryTextColor': '#e3f0fa', 
+    'lineColor': '#ff4081', 
+    'textColor': '#e3f0fa', 
+    'mainBkg': 'transparent', 
+    'nodeBorder': '#ff4081' 
+}}}%%
 flowchart TD
     A["<b>🧬<br>CARDIO:DE++<br>Multi-Modal Corpus</b>"]:::main
-    B1["🤖<br>Robust, Generalizable<br>AI Models"]:::ai
-    B2["🧑‍⚕️<br>Improved Clinical<br>Decision Support"]:::clinical
-    B3["🧪<br>Synthetic Data<br>Generation"]:::synth
-    B4["🔄<br>Data-to-Text &<br>Text-to-Data"]:::datatext
-    B5["🧬<br>Advanced Patient<br>Phenotyping"]:::pheno
-    B6["🤝<br>Collaborative Research<br>& Shared Tasks"]:::collab
+    B1["🤖<br>Robust, Generalizable<br>AI Models"]:::leaf
+    B2["🧑‍⚕️<br>Improved Clinical<br>Decision Support"]:::leaf
+    B3["🧪<br>Synthetic Data<br>Generation"]:::leaf
+    B4["🔄<br>Data-to-Text &<br>Text-to-Data"]:::leaf
+    B5["🧬<br>Advanced Patient<br>Phenotyping"]:::leaf
+    B6["🤝<br>Collaborative Research<br>& Shared Tasks"]:::leaf
 
     A --> B1
     A --> B2
@@ -398,15 +496,43 @@ flowchart TD
     A --> B5
     A --> B6
 
-    classDef main fill:#1976d2,stroke:#0f2027,stroke-width:3px,color:#fff,stroke-dasharray: 0;
-    classDef ai fill:#e3f2fd,stroke:#1976d2,stroke-width:2px,color:#1976d2,stroke-dasharray: 0;
-    classDef clinical fill:#e1f5fe,stroke:#00bcd4,stroke-width:2px,color:#1976d2,stroke-dasharray: 0;
-    classDef synth fill:#f3e5f5,stroke:#ab47bc,stroke-width:2px,color:#6a1b9a,stroke-dasharray: 0;
-    classDef datatext fill:#fffde7,stroke:#ffd600,stroke-width:2px,color:#1976d2,stroke-dasharray: 0;
-    classDef pheno fill:#e8f5e9,stroke:#388e3c,stroke-width:2px,color:#1976d2,stroke-dasharray: 0;
-    classDef collab fill:#fce4ec,stroke:#d81b60,stroke-width:2px,color:#1976d2,stroke-dasharray: 0;
+    classDef main fill:#00bcd433,stroke:#ff4081,stroke-width:3px,color:#e3f0fa,font-weight:bold;
+    classDef leaf fill:transparent,stroke:#ff4081,stroke-width:2px,color:#e3f0fa;
 ```
+</div>
 
+</div>
+
+---
+
+## <span class="section-title">Graphical Abstract</span>
+
+<div style="height: 1.5em;"></div>
+
+<!-- This container uses flexbox to fill the remaining vertical space and create two columns -->
+<div style="flex-grow: 1; display: flex; justify-content: space-around; align-items: start; min-height: 0; gap: 2em;">
+
+  <!-- Left Column: Previous Work -->
+  <div style="flex: 1; text-align: center;">
+    <h3 style="color: #90caf9; margin-bottom: 1em; font-size: 1.2em;">Previous Work</h3>
+    <img 
+      src="/previous.png" 
+      alt="Previous Work" 
+      style="display: block; margin: 0 auto; max-width: 50%; max-height: 65vh; object-fit: contain; border-radius: 12px; box-shadow: 0 4px 24px #1976d288;"
+    >
+  </div>
+
+  <!-- Right Column: This Proposal -->
+  <div style="flex: 1; text-align: center;">
+    <h3 style="color: #90caf9; margin-bottom: 1em; font-size: 1.2em;">Proposed Project</h3>
+    <img 
+      src="/graph_abstract.png" 
+      alt="Proposed Project" 
+      style="display: block; margin: 0 auto; max-width: 75%; max-height: 65vh; object-fit: contain; border-radius: 12px; box-shadow: 0 4px 24px #1976d288;"
+    >
+  </div>
+
+</div>
 ---
 
 ## <span class="section-title">Work Packages Overview</span>
@@ -415,11 +541,11 @@ flowchart TD
 
 | WP  | Title                                   | Months      |
 |-----|-----------------------------------------|-------------|
-| WP1 | Ethics, Legal Framework & Onboarding    | 1–3         |
-| WP2 | Data Acquisition                        | 1–12        |
+| WP1 | Ethics, Legal Framework & Onboarding    | 1–5         |
+| WP2 | Data Acquisition                        | 1–6        |
 | WP3 | De-identification                       | 2–12        |
-| WP4 | Annotation                              | 6–24        |
-| WP5 | Advanced AI Model Development           | 19–23       |
+| WP4 | Annotation                              | 6–18        |
+| WP5 | Advanced AI Model Development           | 13–21       |
 | WP6 | Dissemination & Sustainability          | 19–24       |
 
 ---
@@ -430,7 +556,7 @@ flowchart TD
 
 <div class="vcenter">
 <ul>
-  <li><b>Months:</b> 1–3</li>
+  <li><b>Months:</b> 1–5</li>
   <li><b>Objective:</b> Secure ethical/legal approvals and establish data sharing protocols</li>
   <li><b>Key Tasks:</b>
     <ul>
@@ -464,16 +590,18 @@ flowchart TD
 
 <div class="vcenter">
 <ul>
-  <li><b>Months:</b> 1–12</li>
-  <li><b>Objective:</b> Collect 500 new discharge letters and structured tabular data</li>
+  <li><b>Months:</b> 2–6</li>
+  <li><b>Objective:</b> Collect 1,000 new discharge letters and structured tabular data</li>
   <li><b>Key Tasks:</b>
     <ul>
       <li>Patient consent and data collection at both sites</li>
-      <li>Finalize list of structured data points (labs, ICD-10, vitals, meds, procedures)</li>
-      <li>Extract and link data for each letter</li>
+      <li>extract structured numerical/categorical data and link to SNOMED CT</li>
+      <li>Collect textual reports of findings from echocardiograms and coronary angiography</li>
+      <li>Acquire echocardiogram videos in suitable digital formats, preserving resolution for analysis.</li>
+      <li>Acquire contemporaneous 12-lead ECGs as raw digital time series data.</li>
     </ul>
   </li>
-  <li><b>Deliverables:</b> 500 raw discharge letters + structured data</li>
+  <li><b>Deliverables:</b> 1,000 raw discharge letters + structured data</li>
   <li><b>Lead:</b> Heidelberg & UMM</li>
 </ul>
 <div style="margin-top: 1.2em; font-size: 1em; background: linear-gradient(90deg, #1976d222 60%, #00bcd422 100%); border-left: 6px solid #1976d2; box-shadow: 0 2px 12px #1976d244; padding: 1em 1.2em; border-radius: 12px; display: flex; align-items: flex-start;">
@@ -504,7 +632,7 @@ flowchart TD
       <li>Clean, standardize, and anonymize tabular data</li>
     </ul>
   </li>
-  <li><b>Deliverables:</b> 500 de-identified letters, linked tabular data, quality report</li>
+  <li><b>Deliverables:</b> 1,000 de-identified discharge letters, the corresponding de-identified and linked structured tabular data, along with a comprehensive de-identification quality report, and a DFG 12-month status report </li>
   <li><b>Lead:</b> Heidelberg</li>
 </ul>
 <div style="margin-top: 1.2em; font-size: 1em; background: linear-gradient(90deg, #1976d222 60%, #00bcd422 100%); border-left: 6px solid #1976d2; box-shadow: 0 2px 12px #1976d244; padding: 1em 1.2em; border-radius: 12px; display: flex; align-items: flex-start;">
@@ -520,23 +648,36 @@ flowchart TD
 
 ---
 
+## <span class="section-title">Joint Annotation Process</span>
+
+<div style="height: 2.5em;"></div>
+
+<div style="flex-grow: 1; display: flex; justify-content: center; align-items: center; min-height: 0;">
+  <img 
+    src="/joint_anno2.png" 
+    alt="Joint Annotation Process between UKHD and UMM" 
+    style="max-width: 75%; max-height: 75vh; object-fit: contain; border-radius: 12px; box-shadow: 0 4px 24px #1976d288;"
+  >
+</div>
+
+---
+
 ## <span class="section-title">WP4: Annotation</span>
 
 <div style="height: 1.5em;"></div>
 
 <div class="vcenter">
 <ul>
-  <li><b>Months:</b> 6–24</li>
+  <li><b>Months:</b> 6–18</li>
   <li><b>Objective:</b> Annotate new data using established schemes</li>
   <li><b>Key Tasks:</b>
     <ul>
       <li>Apply CARDIO:DE annotation schemes (medication, section classes)</li>
       <li>Inter-annotator agreement studies</li>
       <li>Link text to tabular data via anonymized IDs</li>
-      <li>(Optional) Explore explicit text-to-table linking</li>
     </ul>
   </li>
-  <li><b>Deliverables:</b> Annotated CARDIO:DE++ corpus, guidelines, reports, splits</li>
+  <li><b>Deliverables:</b> Fully annotated CARDIO:DE++ corpus (including medication/section classes for new letters/reports); linked 12-lead ECGs, structured numerical/categorical data, and echocardiogram videos; new annotation layers; updated guidelines; comprehensive IAA reports</li>
   <li><b>Lead:</b> Heidelberg</li>
 </ul>
 <div style="margin-top: 1.2em; font-size: 1em; background: linear-gradient(90deg, #1976d222 60%, #00bcd422 100%); border-left: 6px solid #1976d2; box-shadow: 0 2px 12px #1976d244; padding: 1em 1.2em; border-radius: 12px; display: flex; align-items: flex-start;">
@@ -558,16 +699,16 @@ flowchart TD
 
 <div class="vcenter">
 <ul>
-  <li><b>Months:</b> 19–23</li>
+  <li><b>Months:</b> 13–23</li>
   <li><b>Objective:</b> Develop and evaluate advanced AI models</li>
   <li><b>Key Tasks:</b>
     <ul>
       <li>Fine-tune LLMs for synthetic data</li>
       <li>Develop data-to-text & text-to-data models</li>
-      <li>Patient phenotyping with multi-modal data</li>
+      <li>Develop/evaluate multimodal models integrating text, structured , ECG, and Echo video data</li>
     </ul>
   </li>
-  <li><b>Deliverables:</b> Synthetic letters, evaluated models, phenotyping reports</li>
+  <li><b>Deliverables:</b> Fine-tuned generative LLMs; evaluated corpus of synthetic discharge letters/reports; developed/evaluated data-to-text and text-to-data NLP models; report on advanced patient phenotyping; baseline performance metrics on CARDIO:DE++.</li>
   <li><b>Lead:</b> Heidelberg</li>
 </ul>
 <div style="margin-top: 1.2em; font-size: 1em; background: linear-gradient(90deg, #1976d222 60%, #00bcd422 100%); border-left: 6px solid #1976d2; box-shadow: 0 2px 12px #1976d244; padding: 1em 1.2em; border-radius: 12px; display: flex; align-items: flex-start;">
@@ -589,14 +730,14 @@ flowchart TD
 
 <div class="vcenter">
 <ul>
-  <li><b>Months:</b> 19–24</li>
+  <li><b>Months:</b> 18–24</li>
   <li><b>Objective:</b> Maximize impact and ensure sustainability</li>
   <li><b>Key Tasks:</b>
     <ul>
       <li>Public release of CARDIO:DE++ corpus</li>
       <li>Documentation and usage examples</li>
-      <li>Peer-reviewed publications and workshops</li>
       <li>Long-term maintenance plan</li>
+      <li>Shared Tasks?</li>
     </ul>
   </li>
   <li><b>Deliverables:</b> Released corpus, documentation, publications, sustainability plan</li>
@@ -701,7 +842,7 @@ flowchart TD
   <tr>
     <td class="timeline-label">WP1</td>
     <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
-    <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
+    <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-empty"></td>
     <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
     <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
     <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
@@ -713,8 +854,8 @@ flowchart TD
     <td class="timeline-label">WP2</td>
     <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
     <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
-    <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
-    <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
+    <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
+    <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
     <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
     <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
     <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
@@ -740,20 +881,20 @@ flowchart TD
     <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
     <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
     <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
-    <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
-    <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
-    <td class="timeline-bar"></td>
+    <td class="timeline-bar"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
+    <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
+    <td class="timeline-empty"></td>
   </tr>
   <tr>
     <td class="timeline-label">WP5</td>
     <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
     <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
     <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
-    <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
-    <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
-    <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
+    <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-bar"></td>
     <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
-    <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-empty"></td>
+    <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
+    <td class="timeline-bar"></td><td class="timeline-bar"></td><td class="timeline-bar"></td>
+    <td class="timeline-empty"></td><td class="timeline-empty"></td><td class="timeline-empty"></td>
   </tr>
   <tr>
     <td class="timeline-label">WP6</td>
