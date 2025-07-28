@@ -7,3 +7,9 @@ dist
 components.d.ts
 
 _*
+
+
+# Deployment script and keys
+deploy.sh
+deploy_key
+deploy_key.pub

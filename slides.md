@@ -4,7 +4,7 @@ colorSchema: all
 highlighter: shiki
 lineNumbers: true
 transition: slide-left
-title: CARDIO:DE++ – Powering Next-Generation Cardiovascular AI
+title: CARDIO:DE++ – Powering Next-Generation Cardiovascular AI live!
 info: >
   A funding proposal summary for a multi-modal German clinical corpus project.
 layout: cover
@@ -105,7 +105,7 @@ a {
     CARDIO:DE++
   </h1>
   <h3 style="color: #e3f0fa; margin-bottom: 0.7em; text-shadow: 0 2px 8px #1976d2cc;">
-    Powering Next-Generation Cardiovascular AI<br>
+    Powering Next-Generation Cardiovascular AI!<br>
     <span style="font-size: 0.7em; color: #90caf9;">with a Rich, Multi-Modal German Clinical Corpus</span>
   </h3>
 
