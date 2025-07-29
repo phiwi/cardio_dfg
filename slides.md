@@ -133,7 +133,20 @@ a {
 
 ---
 
-<div class="section-title">Motivation</div>
+## <span class="section-title">It all started here...</span>
+
+<div style="height: 1.5em;"></div>
+
+<div style="flex-grow: 1; display: flex; justify-content: center; align-items: center; min-height: 0;">
+  <img 
+    src="/call.png" 
+    alt="call" 
+    style="max-width: 55%; max-height: 75vh; object-fit: contain; border-radius: 12px; box-shadow: 0 4px 24px #1976d288;"
+  >
+</div>
+---
+
+<div class="section-title">Motivation (& Challenges)</div>
 
 <div style="height: 1.5em;"></div>
 
@@ -208,7 +221,7 @@ flowchart TD
       <li><b>English corpora:</b> MIMIC-III, MIMIC-IV-Note, i2b2, CLEF, SemEval, THYME</li>
       <li><b>European corpora:</b> MERLOT (French), IULA (Spanish)</li>
       <li><b>German corpora:</b> GGPONC 2.0, 200 Oncological Discharge Summaries, GRASSCO, JSynCC</li>
-      <li><b>Gap:</b> No large, multi-modal, parallel German cardiovascular corpus</li>
+      <li><b>Gap:</b> No multi-modal, parallel German cardiovascular corpus</li>
     </ul>
   </div>
   <div style="flex: 0 1 440px; min-width: 220px; max-width: 33vw; display: flex; flex-direction: column; align-items: flex-end;">
@@ -341,7 +354,7 @@ flowchart TD
     style="background: linear-gradient(120deg, #1976d2 80%, #00bcd4 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1em 1.2em; flex: 1 1 40%; max-width: 45%;">
     <span style="font-size: 1.8em; vertical-align: middle;">🧬</span>
     <b>Enhance Corpus Heterogeneity</b>
-    <div style="font-size: 0.9em; margin-top: 0.5em;">Expand to 1,000 letters from two sites to build generalizable AI models and mitigate site-specific bias.</div>
+    <div style="font-size: 0.9em; margin-top: 0.5em;">Collect 1,000 letters from two sites to build generalizable AI models and mitigate site-specific bias.</div>
   </div>
 
   <!-- O2: Enable Longitudinal Assessment -->
@@ -359,7 +372,7 @@ flowchart TD
     style="background: linear-gradient(120deg, #00bcd4 80%, #1976d2 100%); color: #fff; border-radius: 14px; box-shadow: 0 2px 16px #1976d288; padding: 1em 1.2em; flex: 1 1 40%; max-width: 45%;">
     <span style="font-size: 1.8em; vertical-align: middle;">📊</span>
     <b>Create a Rich Multi-Modal Resource</b>
-    <div style="font-size: 0.9em; margin-top: 0.5em;">Link clinical text with structured data, ECGs, and echocardiogram videos for advanced, integrated AI models.</div>
+    <div style="font-size: 0.9em; margin-top: 0.5em;">Link clinical text with structured data, ECGs, and echocardiogram + coron. angiogram videos for advanced, integrated AI models.</div>
   </div>
 
   <!-- O4: Proactively Mitigate Data Bias -->
@@ -393,11 +406,11 @@ flowchart TD
 }}}%%
 flowchart LR
     subgraph CARDIO_DE["CARDIO:DE Corpus"]
-      A1["500 Cardiovascular Discharge Letters<br/>(Heidelberg)"]
+      A1["5,000 Cardiovascular Discharge Letters<br/>(Heidelberg)"]
       A2["Manual Annotations:<br/>Medication, Sections"]
     end
     subgraph EXT["Enhancements"]
-      B1["2 letters+ per patient"]
+      B1["2 letters+ per patient from two sites"]
       B2["Add:<br> Labs, ECGs, Echos, Angios"]
     end
     subgraph CARDIO_DEPP["CARDIO:DE++"]
@@ -489,8 +502,8 @@ flowchart TD
 | WP1 | Ethics, Legal Framework & Onboarding    | 1–5         |
 | WP2 | Data Acquisition                        | 1–6        |
 | WP3 | De-identification                       | 2–12        |
-| WP4 | Annotation                              | 6–18        |
-| WP5 | Advanced AI Model Development           | 13–21       |
+| WP4 | Annotation                              | 7–18        |
+| WP5 | Advanced AI Model Development           | 12–21       |
 | WP6 | Dissemination & Sustainability          | 19–24       |
 
 ---
@@ -540,9 +553,9 @@ flowchart TD
   <li><b>Key Tasks:</b>
     <ul>
       <li>Patient consent and data collection at both sites</li>
-      <li>extract structured numerical/categorical data and link to SNOMED CT</li>
+      <li>Extract structured numerical/categorical data and link to SNOMED CT</li>
       <li>Collect textual reports of findings from echocardiograms and coronary angiography</li>
-      <li>Acquire echocardiogram and angiography videos in suitable digital formats</li>
+      <li>Acquire echocardiogram and angiography videos in suitable digital formats (DICOM)</li>
       <li>Acquire contemporaneous 12-lead ECGs as raw digital time series data.</li>
     </ul>
   </li>
@@ -619,7 +632,7 @@ flowchart TD
     <ul>
       <li>Apply CARDIO:DE annotation schemes (medication, section classes)</li>
       <li>Inter-annotator agreement studies</li>
-      <li>Link text to tabular data via anonymized IDs</li>
+      <li>Link text to tabular data via LLMs</li>
     </ul>
   </li>
   <li><b>Deliverables:</b> Fully annotated CARDIO:DE++ corpus (including medication/section classes for new letters/reports); linked 12-lead ECGs, structured numerical/categorical data, and echocardiogram videos; new annotation layers; updated guidelines; comprehensive IAA reports</li>
@@ -897,7 +910,7 @@ flowchart TD
   <ul style="list-style: disc inside; padding-left: 0; position: relative, z-index: 1;">
     <li v-click style="margin-bottom: 1.2em; display: flex; align-items: center;">
       <span style="display: inline-flex; align-items: center;">
-        First large, multi-modal, parallel German cardiovascular corpus
+        First large, multi-modal, parallel German (cardiovascular) corpus
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f4c8.png" alt="chart" width="28" height="28" style="vertical-align: middle; margin-left: 0.7em;">
       </span>
     </li>
@@ -924,7 +937,7 @@ flowchart TD
 
 ---
 
-## <span class="section-title">Backup: Alignierung der Labordaten</span>
+## <span class="section-title">Backup: Agreement for Lab Values</span>
 
 <div style="height: 1.5em;"></div>
 
@@ -938,7 +951,7 @@ flowchart TD
 
 ---
 
-## <span class="section-title">Backup: Zuordnung Einrichtung <--> Daten</span>
+## <span class="section-title">Backup: Allocation Units <---> Data</span>
 
 <div style="height: 1.5em;"></div>
 
@@ -952,7 +965,7 @@ flowchart TD
 
 ---
 
-## <span class="section-title">Backup: Aufteilung</span>
+## <span class="section-title">Backup Allocation Unit <---> Number of Patients</span>
 
 <div style="height: 1.5em;"></div>
 
