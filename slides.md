@@ -316,7 +316,7 @@ flowchart TD
     </li>
     <li>
       <span style="display: inline-flex; align-items: center;">
-        Collect data from differnt stays per patient enabling longitudinal analyes
+        Collect data from different stays per patient enabling longitudinal analyes
         <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3e5.png" alt="hospital" width="18" height="18" style="vertical-align: middle; margin-left: 0.5em;">
       </span>
     </li>
